@@ -1,3 +1,3 @@
 export default function Page ()  {
-    return <h1>TES2T</h1>
+    return <h1>this is TestPage</h1>
 }
