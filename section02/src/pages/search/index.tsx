@@ -5,12 +5,12 @@ import { ReactNode } from "react";
 export default function Page () {
 
     const router = useRouter();
-    const {p} = router.query;
+    const {q} = router.query;
 
 
     console.log("router : ", router);
 
-    return <h1>search {p}</h1>
+    return <h1>search {q}</h1>
 }
 
 Page.getLayout = (page : ReactNode) => {
