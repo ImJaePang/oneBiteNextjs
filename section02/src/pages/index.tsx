@@ -3,11 +3,11 @@ import style from "./index.module.css";
 import { ReactNode, useEffect } from "react";
 import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
 import fethRandomBooks from "@/lib/fetch-random-books";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   // 컴포넌트보다 먼저 실행되어서, 컴포넌트에 필요한 데이터를 불러오는 약속된 함수
   // const allBooks = await fetchBooks();
   // const randomBooks = await fethRandomBooks();
@@ -28,7 +28,7 @@ export const getServerSideProps = async () => {
 export default function Home({
   allBooks,
   randomBooks,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   // console.log("allBooks : ", allBooks);
   // console.log("randomBooks : ", randomBooks);
 
