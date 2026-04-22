@@ -1,32 +1,48 @@
 import SearchableLayout from "@/components/searchable-layout";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import BookItem from "@/components/book-item";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+// import { GetServerSidePropsContext, GetStaticPropsContext, InferGetServerSidePropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
+import { BookData } from "@/types";
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
-//   console.log("context : ", context);
-//   console.log("context.query.q : ", context.query.q);
-const q = context.query.q;
+// export const getStaticProps = async (
+//   context: GetStaticPropsContext,
+// ) => {
+// //   console.log("context : ", context);
+// //   console.log("context.query.q : ", context.query.q);
+// const q = context.query.q;
 
-const books = await fetchBooks(q as string);
+// const books = await fetchBooks(q as string);
 
-console.log("books terminal : ", books);
+// console.log("books terminal : ", books);
 
-  return {
-    props: {
-        books,
-    },
-  };
-};
+//   return {
+//     props: {
+//         books,
+//     },
+//   };
+// };
 
-export default function Page({books} : InferGetServerSidePropsType<typeof getServerSideProps>) {
-//   const router = useRouter();
-//   const { q } = router.query;
-console.log("books : ", books);
+export default function Page() {
+
+  const [books, setBooks] = useState<BookData[]>([]);
+  const router = useRouter();
+  const q = router.query.q;
+// console.log("books : ", books);
+
+const fetchSearchResult = async () => {
+  const data = await fetchBooks(q as string);
+  setBooks(data);
+}
+
+  useEffect(()=>{
+    if(q) {
+      // 검색결과를 불러오는 로직
+      fetchSearchResult();
+    }
+  },[q]);
+
 
   return (
     <div>

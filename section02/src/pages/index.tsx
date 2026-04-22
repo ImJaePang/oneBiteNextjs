@@ -17,6 +17,8 @@ export const getStaticProps = async () => {
     fethRandomBooks(),
   ]);
 
+  console.log("인덱스 페이지");
+
   return {
     props: {
       allBooks,
