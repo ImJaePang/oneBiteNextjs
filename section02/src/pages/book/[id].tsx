@@ -9,6 +9,7 @@ import {
   InferGetStaticPropsType,
 } from "next";
 import fetchOneBook from "@/lib/fetch-oneBook";
+import { notFound } from "next/navigation";
 
 export const getStaticPaths = () => {
   return {
@@ -17,7 +18,10 @@ export const getStaticPaths = () => {
       { params : {id : "2"} },
       { params : {id : "3"} },
     ],
-    fallback : "blocking",
+    fallback : true,
+    // false : 404 NotFound
+    // blocking : ssr
+    // true : ssr - fallback status page
   }
 }
 
@@ -44,8 +48,13 @@ export default function Page({
   // const {id} = router.query;
   // console.log("id[] : ", id)
 
-  if (!book) return "문제가 발생했습니다. 다시 시도하세요";
-
+  if(router.isFallback) {return "now Loading..."} //  로딩 중
+  if (!book) {
+    // return "문제가 발생했습니다. 다시 시도하세요";
+    return {
+      notFound : true,
+    };
+  }
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
     book;
 
