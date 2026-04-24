@@ -5,6 +5,7 @@ import BookItem from "@/components/book-item";
 // import { GetServerSidePropsContext, GetStaticPropsContext, InferGetServerSidePropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
 import { BookData } from "@/types";
+import Head from "next/head";
 
 // export const getStaticProps = async (
 //   context: GetStaticPropsContext,
@@ -46,6 +47,15 @@ const fetchSearchResult = async () => {
 
   return (
     <div>
+      <Head>
+        <title>oneBiteBooks - searchResult</title>
+        <meta property="og:imgage" content="/thumbnail.png" />
+        <meta property="og:title" content="oneBiteBooks" />
+        <meta
+          property="og:description"
+          content="한입 북스에 등록된 도서들을 만나보세요"
+        />
+      </Head>
       {books.map((book) => (
         <BookItem key={book.id} {...book} />
       ))}
