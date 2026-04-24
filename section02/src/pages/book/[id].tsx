@@ -65,7 +65,7 @@ export default function Page({
       notFound : true,
     };
   }
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+  const { title, subTitle, description, author, publisher, coverImgUrl } =
     book;
 
   return (
@@ -84,7 +84,7 @@ export default function Page({
           className={style.cover_img_container}
           style={{ backgroundImage: `url('${coverImgUrl}')` }}
         >
-          <img src={coverImgUrl} />
+          <img src={coverImgUrl} alt="coverImg" />
         </div>
         <div className={style.title}>{title}</div>
         <div className={style.subTitle}>{subTitle}</div>
