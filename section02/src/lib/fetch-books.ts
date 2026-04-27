@@ -1,10 +1,10 @@
 import { BookData } from "@/types";
 
 export default async function fetchBooks (q?:string) : Promise<BookData[]>{
-    let url = "http://localhost:12345/book";
+    let url = "https://onebite-books-server-main-one-indol.vercel.app/book";
 
     if(q){
-        url = `http://localhost:12345/book/search?q=${q}`;
+        url = `https://onebite-books-server-main-one-indol.vercel.app/book/search?q=${q}`;
     }
     console.log("url :", url);
 
