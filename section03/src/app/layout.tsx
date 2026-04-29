@@ -28,12 +28,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <header>
-        <Link href={"/"}>index</Link>&nbsp;
-        <Link href={"/search"}>search</Link>&nbsp;
-        <Link href={"/book/1"}>book/1</Link>
-      </header>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header>
+          <Link href={"/"}>index</Link>&nbsp;
+          <Link href={"/search"}>search</Link>&nbsp;
+          <Link href={"/book/1"}>book/1</Link>
+        </header>
+        {children}
+        </body>
     </html>
   );
 }
