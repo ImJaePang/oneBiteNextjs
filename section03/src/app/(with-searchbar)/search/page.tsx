@@ -1,4 +1,4 @@
-import books from "@/mock/books.json";
+// import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 
