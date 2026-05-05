@@ -8,6 +8,7 @@ export default function Layout({
 }) {
   return (
     <div>
+      {/* <div>{new Date().toLocaleString()}</div> */}
       <Suspense fallback={<div>로딩중...</div>}>
         <Searchbar />
       </Suspense>
