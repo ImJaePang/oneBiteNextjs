@@ -9,14 +9,14 @@ async function Footer() {
         { cache: "force-cache" }
     );
     if (!response.ok) {
-        return <footer>제작 @winterlood</footer>;
+        return <footer>제작 @jaePang</footer>;
     }
     const books: BookData[] = await response.json();
     const bookCount = books.length;
 
     return (
         <footer>
-            <div>제작 @winterlood</div>
+            <div>제작 @jaePang</div>
             <div>{bookCount}개의 도서가 등록되어 있습니다.</div>
         </footer>
     );
@@ -35,7 +35,7 @@ export default function RootLayout({
                         <Link href={"/"}>📚 ONEBITE BOOKS</Link>
                     </header>
                     <main>{children}</main>
-                    {/* <footer>제작 @winterlood</footer> */}
+                    {/* <footer>제작 @jaePang</footer> */}
                     <Footer />
                 </div>
             </body>
