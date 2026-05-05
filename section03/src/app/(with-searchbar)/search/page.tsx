@@ -1,9 +1,11 @@
 // import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
-import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
+// import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
 import { BookData } from "@/types";
 import { delay } from "@/util/delay";
 import { Suspense } from "react";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 async function SearchedBook({ q }: { q: string }) {
     await delay(1500);
@@ -33,7 +35,7 @@ export default async function Page({
     const { q } = await searchParams;
 
     return (
-        <Suspense key={q || ""} fallback={<BookListSkeleton count={3} />}>
+        <Suspense key={q || ""} fallback={<Skeleton count={3} />}>
             <SearchedBook q={q || ""} />
         </Suspense>
     );
