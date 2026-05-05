@@ -1,8 +1,12 @@
 // import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
+import { delay } from "@/util/delay";
 
 async function SearchedBook ({q} : {q : string}){
+
+  await delay(1500);
+
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`,
     {cache: "force-cache"}
   );
