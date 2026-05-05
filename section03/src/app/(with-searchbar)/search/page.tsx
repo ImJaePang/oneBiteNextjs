@@ -2,6 +2,7 @@
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 import { delay } from "@/util/delay";
+import { Suspense } from "react";
 
 async function SearchedBook ({q} : {q : string}){
 
@@ -27,11 +28,8 @@ export default async function Page({
   const { q } = await searchParams;
 
   return (
-    <div>
-      {/* {books.map((book) => (
-        <BookItem key={book.id} {...book} />
-      ))} */}
-      <SearchedBook q={q as string} />
-    </div>
+      <Suspense key={q || ""} fallback={<div>로딩중...</div>}>
+        <SearchedBook q={q || ""} />
+      </Suspense>
   );
 }
