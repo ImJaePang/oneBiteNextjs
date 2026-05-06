@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 export async function createReviewAction(formData: FormData) {
     // async function createReviewAction(){
     // console.log("server action called");
@@ -21,6 +23,8 @@ export async function createReviewAction(formData: FormData) {
             },
         );
         console.log(response.status);
+        revalidatePath(`/book/${bookId}`);
+
     } catch (err) {
         console.error(err);
         return;

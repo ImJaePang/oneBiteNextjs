@@ -57,7 +57,7 @@ async function ReviewList({ bookId }: { bookId: string }) {
     }
 
     const reviews: ReviewData[] = await response.json();
-    console.log(reviews);
+    // console.log(reviews);
 
     return (
         <section>
