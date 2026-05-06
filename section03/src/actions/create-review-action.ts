@@ -46,7 +46,7 @@ export async function createReviewAction(_: any, formData: FormData) {
         if (!response.ok) {
             throw new Error(response.statusText);
         }
-        revalidateTag(`review-${bookId}`);
+        revalidateTag(`review-${bookId}`, "default");
         return {
             status: true,
             error: "",
