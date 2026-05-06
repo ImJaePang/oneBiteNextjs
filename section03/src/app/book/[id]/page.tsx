@@ -49,6 +49,7 @@ async function ReviewList({ bookId }: { bookId: string }) {
         `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`,
         {
             method: "GET",
+            next : {tags : [`review-${bookId}`]}
         },
     );
 
