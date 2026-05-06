@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import style from "./page.module.css";
+import { createReviewAction } from "@/actions/create-review-action";
 
 // export const dynamicParams = false; // 다이나믹만 넣고 싶을때
 
@@ -39,23 +40,15 @@ async function BookDetail({ bookId }: { bookId: string }) {
     );
 }
 
-function ReviewEditor() {
-
-  async function createReviewAction(formData : FormData){
-  // async function createReviewAction(){
-    'use server';
-    // console.log("server action called");
-    // console.log("formData : ", formData);
-    const content = formData.get("content")?.toString();
-    const author = formData.get("author")?.toString();
-    // console.log(content, author);
-  }
+function ReviewEditor({bookId} : {bookId :string}) {
+    
     return (
         <section>
             <form action={createReviewAction}>
-              <input name="content" placeholder="리뷰 내용" />
-              <input name="author" placeholder="작성자" />
-              <button type="submit">작성하기</button>
+                <input name="bookId" value={bookId} hidden readOnly />
+                <input required name="content" placeholder="리뷰 내용" />
+                <input required name="author" placeholder="작성자" />
+                <button type="submit">작성하기</button>
             </form>
         </section>
     );
@@ -70,7 +63,7 @@ export default async function Page({
     return (
         <div className={style.container}>
             <BookDetail bookId={id} />
-            <ReviewEditor />
+            <ReviewEditor bookId={id} />
         </div>
     );
 }

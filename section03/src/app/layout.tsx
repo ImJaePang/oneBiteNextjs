@@ -14,7 +14,7 @@ async function Footer() {
     const books: BookData[] = await response.json();
     const bookCount = books.length;
 
-    console.log("Footer!");
+    // console.log("Footer!");
 
     return (
         <footer>
