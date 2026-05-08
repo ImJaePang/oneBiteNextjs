@@ -40,6 +40,7 @@ export default function RootLayout({
                     {/* <footer>제작 @jaePang</footer> */}
                     <Footer />
                 </div>
+                <div id="modal-root"></div>
             </body>
         </html>
     );
