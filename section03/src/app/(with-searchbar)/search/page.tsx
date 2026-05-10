@@ -1,11 +1,14 @@
 // import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
+
 // import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
 import { BookData } from "@/types";
 import { delay } from "@/util/delay";
+import { Metadata } from "next";
 import { Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
+
 
 async function SearchedBook({ q }: { q: string }) {
     await delay(1500);
@@ -25,6 +28,27 @@ async function SearchedBook({ q }: { q: string }) {
             ))}
         </div>
     );
+}
+
+// export const metadata : Metadata = {
+//     title : "한입북스 : 검색어",
+//     description : "",
+//     openGraph : {},
+// }
+
+export async function generateMetadata ({searchParams} : {searchParams : Promise<{q? : string}>}) : Promise<Metadata> {
+
+    const {q} = await searchParams;
+
+    return {
+        title : `${q} : 한입북스 검색`,
+        description : `${q}에 대한 검색 결과 입니다.`,
+        openGraph : {
+            title : `${q} : 한입북스 검색`,
+            description : `${q}에 대한 검색 결과 입니다.`,
+            images : ["/thumbnail.png"],
+        }
+    }
 }
 
 export default async function Page({
